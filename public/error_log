@@ -1,0 +1,6 @@
+[22-Feb-2024 10:16:10 UTC] PHP Warning:  require_once(/home/mbintern/api.codersmind23.com/bootstrap/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/mbintern/api.codersmind23.com/bootstrap/app.php on line 5
+[22-Feb-2024 10:16:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/mbintern/api.codersmind23.com/bootstrap/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/mbintern/api.codersmind23.com/bootstrap/app.php:5
+Stack trace:
+#0 /home/mbintern/api.codersmind23.com/public/index.php(14): require()
+#1 {main}
+  thrown in /home/mbintern/api.codersmind23.com/bootstrap/app.php on line 5
