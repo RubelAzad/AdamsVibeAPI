@@ -27,7 +27,7 @@ public function index(Request $request)
             ->select('order_items.inventory_id', DB::raw('SUM(order_items.quantity) as total_quantity'))
             ->where('orders.order_status_id', 4) // Only delivered orders
             ->whereBetween('orders.order_date', [$startDate, $endDate])
-            ->groupBy('order_items.inventory_id')h 
+            ->groupBy('order_items.inventory_id')
             ->orderBy('total_quantity', 'desc')
             ->limit(10)
             ->pluck('order_items.inventory_id')
