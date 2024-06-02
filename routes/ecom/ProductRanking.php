@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'inventories'], function () {
     Route::get('/top', 'ProductRankingController@index');
+    Route::get('/wholesale-top', 'ProductRankingController@wholesaleTop');
     
 });
