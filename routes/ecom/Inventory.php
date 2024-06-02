@@ -31,4 +31,6 @@ Route::group(['prefix' => 'inventories'], function () {
     Route::get('/vendorPro', 'InventoryController@VendorPro');
     Route::get('/vendorProDiscounted', 'InventoryController@VendorProDiscounted');
     Route::get('/{id}/showVendorProduct', 'InventoryController@ShowVendorProduct');
+
+    Route::get('/bulk-product', 'InventoryController@bulkProduct');
 });

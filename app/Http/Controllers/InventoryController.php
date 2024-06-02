@@ -98,6 +98,36 @@ class InventoryController extends Controller
         }
     }
 
+    public function bulkProduct(Request $request)
+    {
+        try {
+            $query = Inventory::query();
+            $query->with(['product', 'inventoryVariants', 'inventoryImages'])
+            ->where('status', Inventory::STATUS_ACTIVE)
+            ->where('is_vendor', '=', '1')
+            ->orWhere('is_pre_order', '=', '1')
+            ->whereDate('pre_start', '<=', now())
+            ->whereDate('pre_end', '>=', now());
+
+
+            $query->when($request->order_column && $request->order_by, function ($q) use ($request) {
+                $q->orderBy($request->order_column, $request->order_by);
+            });
+
+            $query->when($request->limit, function ($q) use ($request) {
+                $q->limit($request->limit);
+            });
+
+            if ($request->paginate === 'yes') {
+                return $query->paginate($request->get('limit', 15));
+            } else {
+                return $query->get();
+            }
+        } catch (Exception $exception) {
+            return make_error_response($exception->getMessage());
+        }
+    }
+
     public function discounted(Request $request)
     {
         try {
